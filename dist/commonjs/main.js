@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var QuillDeltaToHtmlConverter_1 = require("./QuillDeltaToHtmlConverter");
 exports.QuillDeltaToHtmlConverter = QuillDeltaToHtmlConverter_1.QuillDeltaToHtmlConverter;
+var QuillDeltaToHtmlAsyncConverter_1 = require("./QuillDeltaToHtmlAsyncConverter");
+exports.QuillDeltaToHtmlAsyncConverter = QuillDeltaToHtmlAsyncConverter_1.QuillDeltaToHtmlAsyncConverter;
 var OpToHtmlConverter_1 = require("./OpToHtmlConverter");
 exports.OpToHtmlConverter = OpToHtmlConverter_1.OpToHtmlConverter;
 var group_types_1 = require("./grouper/group-types");

@@ -1,5 +1,6 @@
 // main entry file for node
 export { QuillDeltaToHtmlConverter } from './QuillDeltaToHtmlConverter';
+export { QuillDeltaToHtmlAsyncConverter } from './QuillDeltaToHtmlAsyncConverter';
 export { OpToHtmlConverter } from './OpToHtmlConverter';
 export {
   InlineGroup,
