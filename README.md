@@ -193,6 +193,21 @@ html = converter.convert();
 }
 ```
 
+### Rendering Custom Blot Formats: Async version ###
+
+```javascript
+import { QuillDeltaToHtmlAsyncConverter } from 'quill-delta-to-html'; 
+
+const converter = new QuillDeltaToHtmlAsyncConverter(ops);
+
+converter.renderCustomWith(async function(customOp, contextOp){
+    await // …
+    return `<span id="${val.id}">${val.text}</span>`;
+});
+
+var html = await converter.convert();
+```
+
 ## Advanced Custom Rendering Using Grouped Ops ##
 
 If you want to do the full rendering yourself, you can do so 

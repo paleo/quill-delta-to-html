@@ -1,6 +1,6 @@
 {
-  "name": "@paroi/quill-delta-to-html",
-  "version": "0.12.2",
+  "name": "quill-delta-to-html",
+  "version": "0.13.0",
   "description": "Converts Quill's delta ops to HTML (async version)",
   "main": "./dist/commonjs/main.js",
   "types": "./dist/commonjs/main.d.ts",

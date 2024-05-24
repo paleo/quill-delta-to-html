@@ -45,16 +45,9 @@ export declare class QuillDeltaToHtmlConverter {
   _renderInlines(ops: DeltaInsertOp[], isInlineGroup?: boolean): string;
   _renderInline(op: DeltaInsertOp, contextOp: DeltaInsertOp | null): any;
   _renderCustom(op: DeltaInsertOp, contextOp: DeltaInsertOp | null): any;
-  _renderCustomAsync(
-    op: DeltaInsertOp,
-    contextOp: DeltaInsertOp | null
-  ): Promise<any>;
   beforeRender(cb: (group: GroupType, data: TDataGroup) => string): void;
   afterRender(cb: (group: GroupType, html: string) => string): void;
   renderCustomWith(
-    cb: (op: DeltaInsertOp, contextOp: DeltaInsertOp) => string
-  ): void;
-  renderCustomWithAsync(
     cb: (op: DeltaInsertOp, contextOp: DeltaInsertOp) => string
   ): void;
 }

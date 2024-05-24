@@ -224,7 +224,7 @@ var QuillDeltaToHtmlAsyncConverter = (function () {
                         if (!li.innerList) return [3, 3];
                         return [4, this._renderList(li.innerList)];
                     case 2:
-                        _b = (_c.sent());
+                        _b = _c.sent();
                         return [3, 4];
                     case 3:
                         _b = '';
@@ -262,7 +262,9 @@ var QuillDeltaToHtmlAsyncConverter = (function () {
                 switch (_b.label) {
                     case 0:
                         _a = funcs_html_1.makeStartTag('tr');
-                        return [4, mapStringsAsync(row.cells, function (cell) { return _this._renderTableCell(cell); })];
+                        return [4, mapStringsAsync(row.cells, function (cell) {
+                                return _this._renderTableCell(cell);
+                            })];
                     case 1: return [2, (_a +
                             (_b.sent()) +
                             funcs_html_1.makeEndTag('tr'))];
@@ -325,7 +327,9 @@ var QuillDeltaToHtmlAsyncConverter = (function () {
                     case 1: return [2, (_a +
                             _b.apply(void 0, [_c.sent()]) +
                             htmlParts.closingTag)];
-                    case 2: return [4, mapStringsAsync(ops, function (op) { return _this._renderInline(op, bop); })];
+                    case 2: return [4, mapStringsAsync(ops, function (op) {
+                            return _this._renderInline(op, bop);
+                        })];
                     case 3:
                         inlines = _c.sent();
                         return [2, htmlParts.openingTag + (inlines || QuillDeltaToHtmlConverter_1.BrTag) + htmlParts.closingTag];
