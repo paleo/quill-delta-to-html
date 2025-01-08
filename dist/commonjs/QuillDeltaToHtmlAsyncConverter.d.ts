@@ -14,7 +14,12 @@ export declare class QuillDeltaToHtmlAsyncConverter {
   private rawDeltaOps;
   private converterOptions;
   private callbacks;
-  constructor(deltaOps: any[], options?: IQuillDeltaToHtmlConverterOptions);
+  constructor(
+    deltaOps: any[],
+    options?: IQuillDeltaToHtmlConverterOptions & {
+      linkTarget?: (url: string) => string | undefined;
+    }
+  );
   _getListTag(op: DeltaInsertOp): string;
   getGroupedOps(): TDataGroup[];
   convert(): Promise<string>;

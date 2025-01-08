@@ -36,7 +36,12 @@ export class QuillDeltaToHtmlAsyncConverter {
   // render callbacks
   private callbacks: any = {};
 
-  constructor(deltaOps: any[], options?: IQuillDeltaToHtmlConverterOptions) {
+  constructor(
+    deltaOps: any[],
+    options?: IQuillDeltaToHtmlConverterOptions & {
+      linkTarget?: (url: string) => string | undefined;
+    }
+  ) {
     this.options = obj.assign(
       {
         paragraphTag: 'p',

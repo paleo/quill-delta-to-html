@@ -58,7 +58,7 @@ interface IOpToHtmlConverterOptions {
   listItemTag?: string;
   paragraphTag?: string;
   linkRel?: string;
-  linkTarget?: string;
+  linkTarget?: string | ((url: string) => string | undefined);
   allowBackgroundClasses?: boolean;
   customTag?: (format: string, op: DeltaInsertOp) => string | void;
   customTagAttributes?: (op: DeltaInsertOp) => { [key: string]: string } | void;
@@ -324,16 +324,20 @@ class OpToHtmlConverter {
   getLinkAttrs(): Array<ITagKeyValue> {
     let tagAttrs: ITagKeyValue[] = [];
 
-    let targetForAll = OpAttributeSanitizer.isValidTarget(
-      this.options.linkTarget || ''
-    )
-      ? this.options.linkTarget
-      : undefined;
+    let target = this.op.attributes.target;
+    if (!target && this.options.linkTarget) {
+      let defaultTarget =
+        typeof this.options.linkTarget === 'string'
+          ? this.options.linkTarget
+          : this.options.linkTarget(this.op.attributes.link!);
+      if (defaultTarget && OpAttributeSanitizer.isValidTarget(defaultTarget)) {
+        target = defaultTarget;
+      }
+    }
     let relForAll = OpAttributeSanitizer.IsValidRel(this.options.linkRel || '')
       ? this.options.linkRel
       : undefined;
 
-    let target = this.op.attributes.target || targetForAll;
     let rel = this.op.attributes.rel || relForAll;
 
     return tagAttrs

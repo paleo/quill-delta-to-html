@@ -668,13 +668,18 @@ var OpToHtmlConverter = (function () {
     };
     OpToHtmlConverter.prototype.getLinkAttrs = function () {
         var tagAttrs = [];
-        var targetForAll = OpAttributeSanitizer_1.OpAttributeSanitizer.isValidTarget(this.options.linkTarget || '')
-            ? this.options.linkTarget
-            : undefined;
+        var target = this.op.attributes.target;
+        if (!target && this.options.linkTarget) {
+            var defaultTarget = typeof this.options.linkTarget === 'string'
+                ? this.options.linkTarget
+                : this.options.linkTarget(this.op.attributes.link);
+            if (defaultTarget && OpAttributeSanitizer_1.OpAttributeSanitizer.isValidTarget(defaultTarget)) {
+                target = defaultTarget;
+            }
+        }
         var relForAll = OpAttributeSanitizer_1.OpAttributeSanitizer.IsValidRel(this.options.linkRel || '')
             ? this.options.linkRel
             : undefined;
-        var target = this.op.attributes.target || targetForAll;
         var rel = this.op.attributes.rel || relForAll;
         return tagAttrs
             .concat(this.makeAttr('href', this.op.attributes.link))

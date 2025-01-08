@@ -20,7 +20,7 @@ interface IOpToHtmlConverterOptions {
   listItemTag?: string;
   paragraphTag?: string;
   linkRel?: string;
-  linkTarget?: string;
+  linkTarget?: string | ((url: string) => string | undefined);
   allowBackgroundClasses?: boolean;
   customTag?: (format: string, op: DeltaInsertOp) => string | void;
   customTagAttributes?: (
